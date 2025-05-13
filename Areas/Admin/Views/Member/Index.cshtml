@@ -1,0 +1,43 @@
+﻿@using WebApplication7.Models
+
+@model List<Member>
+@{
+    int count = 0;
+}
+<div class="container">
+    <h1> Doctors </h1>
+    <a asp-action="Create" class="btn btn-submit"> Create </a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">FullName</th>
+                <th scope="col">Job</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <th scope="row">@count</th>
+                    <td>@item.FullName</td>
+                 
+                    <td>@item.Job</td>
+                    <td width="100px">
+                        <img width="100%" src="~/Upload/Member/@item.ImgUrl?">
+                    </td>
+                    <td>
+
+                        <a class="btn btn-dark" asp-action="Update" asp-route-id="@item.Id">Update </a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete </a>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
