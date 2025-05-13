@@ -69,9 +69,9 @@ namespace WebApplication7.Areas.Admin.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> Update(int? id)
+        public async Task<IActionResult> Update( Member member)
         {
-            var member = await _context.members.FirstOrDefaultAsync(X => X.Id == id);
+         
 
 
             if (member.File != null)
@@ -94,9 +94,8 @@ namespace WebApplication7.Areas.Admin.Controllers
 
                 }
             }
-            member.FullName = member.FullName;
-            member.Job = member.Job;
-
+            member.ImgUrl = FileCreateExtentions.CreaterFile(member.File, "C:\\Users\\I Novbe\\source\\repos\\WebApplication7\\WebApplication7\\wwwroot", "Upload/Member");
+            _context.members.Update(member);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
