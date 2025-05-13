@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using WebApplication7.Models;
 
 namespace WebApplication7.DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext :IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {
